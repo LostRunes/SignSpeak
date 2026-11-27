@@ -1,0 +1,16 @@
+[Unit]
+Description=ISL sign language to speech (camera -> recognition -> voice)
+# speech needs the user's sound server (PipeWire), which also handles Bluetooth speakers
+After=pipewire.service pipewire-pulse.service wireplumber.service
+Wants=pipewire-pulse.service wireplumber.service
+
+[Service]
+WorkingDirectory=%h/signlng_cam
+ExecStart=%h/signlng_cam/.venv/bin/python run.py --source picam --headless
+Environment=PYTHONUNBUFFERED=1
+# camera not ready yet / any crash: start again after 5 s, forever
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target

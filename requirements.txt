@@ -1,0 +1,6 @@
+mediapipe==0.10.21
+numpy<2
+pyttsx3
+pywin32; sys_platform == "win32"
+# training only (CPU build is enough):  pip install torch --index-url https://download.pytorch.org/whl/cpu
+torch

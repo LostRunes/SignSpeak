@@ -1,0 +1,16 @@
+# Raspberry Pi 4, Raspberry Pi OS Trixie 64-bit (system Python 3.13).
+#
+# MediaPipe 1.x needs the ARM AES instructions, which the Pi 4 CPU lacks ("Illegal instruction").
+# The newest Pi-4-safe build is 0.10.18, which needs Python <= 3.12, so the venv uses a separate
+# Python 3.12 installed by uv. The camera is then read through rpicam-vid (--source picam),
+# because the apt picamera2 package only works with the system Python.
+#
+#   sudo apt install -y espeak-ng
+#   curl -LsSf https://astral.sh/uv/install.sh | sh      # then open a new terminal
+#   uv python install 3.12
+#   rm -rf .venv && uv venv -p 3.12 .venv
+#   uv pip install -p .venv -r requirements-pi.txt
+#   .venv/bin/python run.py --source picam
+mediapipe==0.10.18
+numpy<2
+pyttsx3

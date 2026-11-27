@@ -1,0 +1,10 @@
+# environments / caches
+.venv/
+__pycache__/
+*.pyc
+.vscode/
+# training data (large, partly third-party datasets) - re-create with download_script.sh + import_dataset.py
+data/
+# superseded drafts and raw screenshots (curated copies live in media/)
+docs/
+Screenshot*.png
